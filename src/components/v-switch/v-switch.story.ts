@@ -69,7 +69,7 @@ export const colors = () => ({
 	},
 	props: {
 		customColor: {
-			default: color('Custom color', '#ff0266')
+			default: color('Custom color', '#4CAF50')
 		}
 	},
 	template: `
@@ -78,7 +78,6 @@ export const colors = () => ({
 		<v-switch v-model="options" value="blue" @change="onChange" color="--blue" label="Blue" />
 		<v-switch v-model="options" value="yellow" @change="onChange" color="--amber" label="Yellow" />
 		<v-switch v-model="options" value="custom" @change="onChange" :color="customColor" label="Custom..." />
-		<pre style="max-width: max-content; margin-top: 20px; background-color: #eee; font-family: monospace; padding: 0.5rem; border-radius: 8px;">{{options}}</pre>
 	</div>
 	`
 });
