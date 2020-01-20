@@ -1,4 +1,4 @@
-import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
+import { withKnobs, text, boolean, number, optionsKnob as options } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import Vue from 'vue';
 import VButton from './v-button.vue';
@@ -44,6 +44,23 @@ export const withText = () => ({
 		width: {
 			default: number('Width', 0, {}, 'Button')
 		},
+		size: {
+			default: options(
+				'Size',
+				{
+					'Extra Small': 'xSmall',
+					Small: 'small',
+					'(default)': 'default',
+					Large: 'large',
+					'Extra Large': 'xLarge'
+				},
+				'default',
+				{
+					display: 'select'
+				},
+				'Button'
+			)
+		},
 		disabled: {
 			default: boolean('Disabled', false, 'Button')
 		},
@@ -74,6 +91,10 @@ export const withText = () => ({
 			:disabled="disabled"
 			:loading="loading"
 			:width="width"
+			:x-small="size === 'xSmall'"
+			:small="size === 'small'"
+			:large="size === 'large'"
+			:x-large="size === 'xLarge'"
 			@click="onClick"
 		>
 			{{ text }}
@@ -108,6 +129,40 @@ export const withIcon = () => ({
 		width: {
 			default: number('Width', 0, {}, 'Button')
 		},
+		size: {
+			default: options(
+				'Size',
+				{
+					'Extra Small': 'xSmall',
+					Small: 'small',
+					'(default)': 'default',
+					Large: 'large',
+					'Extra Large': 'xLarge'
+				},
+				'default',
+				{
+					display: 'select'
+				},
+				'Button'
+			)
+		},
+		iconSize: {
+			default: options(
+				'Size (Icon)',
+				{
+					'Extra Small': 'xSmall',
+					Small: 'small',
+					'(default)': 'default',
+					Large: 'large',
+					'Extra Large': 'xLarge'
+				},
+				'default',
+				{
+					display: 'select'
+				},
+				'Button'
+			)
+		},
 		disabled: {
 			default: boolean('Disabled', false, 'Button')
 		},
@@ -138,10 +193,27 @@ export const withIcon = () => ({
 			:disabled="disabled"
 			:loading="loading"
 			:width="width"
+			:x-small="size === 'xSmall'"
+			:small="size === 'small'"
+			:large="size === 'large'"
+			:x-large="size === 'xLarge'"
 			@click="onClick"
 		>
-			<v-icon :name="iconName" />
-			<v-icon slot="loading" name="sync" />
+			<v-icon
+				:name="iconName"
+				:x-small="iconSize === 'xSmall'"
+				:small="iconSize === 'small'"
+				:large="iconSize === 'large'"
+				:x-large="iconSize === 'xLarge'"
+			/>
+			<v-icon
+				slot="loading"
+				name="sync"
+				:x-small="iconSize === 'xSmall'"
+				:small="iconSize === 'small'"
+				:large="iconSize === 'large'"
+				:x-large="iconSize === 'xLarge'"
+			/>
 		</v-button>
 	`
 });
