@@ -32,7 +32,7 @@ import VSelect from './components/form-inputs/select.vue';
 import VSimpleSelect from './components/form-inputs/simple-select.vue';
 import VSlider from './components/form-inputs/slider.vue';
 import VTextarea from './components/form-inputs/textarea.vue';
-import VToggle from './components/form-inputs/toggle.vue';
+import VSwitch from './components/v-switch/';
 
 // Modals
 import VAlert from './components/modals/alert.vue';
@@ -80,7 +80,7 @@ Vue.component('v-select', VSelect);
 Vue.component('v-simple-select', VSimpleSelect);
 Vue.component('v-slider', VSlider);
 Vue.component('v-textarea', VTextarea);
-Vue.component('v-toggle', VToggle);
+Vue.component('v-toggle', VSwitch);
 
 // Modals
 Vue.component('v-alert', VAlert);

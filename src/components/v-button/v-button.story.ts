@@ -9,7 +9,7 @@ Vue.component('v-button', VButton);
 Vue.component('v-icon', VIcon);
 
 export default {
-	title: 'Button',
+	title: 'Components / Button',
 	component: VButton,
 	decorators: [withKnobs],
 	parameters: {

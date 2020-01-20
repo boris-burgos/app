@@ -551,14 +551,12 @@
       "24hour": "Display 24 hour clock",
       "24hour_comment": "Show the time in 24-hour format (eg.: 15:30)"
     },
-    "toggle": {
-      "toggle": "Toggle",
+    "switch": {
+      "switch": "Switch",
       "label_on": "Label (On)",
       "label_on_comment": "Label to show next to the toggle when the toggle is on",
       "label_off": "Label (Off)",
-      "label_off_comment": "Label to show next to the toggle when the toggle is off",
-      "checkbox": "Show as Checkbox",
-      "checkbox_comment": "Display a checkbox instead of the default switch"
+      "label_off_comment": "Label to show next to the toggle when the toggle is off"
     },
     "toggle-icon": {
       "toggle-icon": "Toggle Icon",

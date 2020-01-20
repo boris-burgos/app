@@ -14,7 +14,7 @@ import markdown from './v-switch.readme.md';
 Vue.component('v-switch', VSwitch);
 
 export default {
-	title: 'Switch',
+	title: 'Components / Switch',
 	component: VSwitch,
 	decorators: [withKnobs],
 	parameters: {
