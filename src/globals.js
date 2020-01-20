@@ -80,7 +80,7 @@ Vue.component('v-select', VSelect);
 Vue.component('v-simple-select', VSimpleSelect);
 Vue.component('v-slider', VSlider);
 Vue.component('v-textarea', VTextarea);
-Vue.component('v-toggle', VSwitch);
+Vue.component('v-switch', VSwitch);
 
 // Modals
 Vue.component('v-alert', VAlert);
