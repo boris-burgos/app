@@ -1,13 +1,13 @@
 <template>
-	<button
-		@click="toggleInput"
-		class="v-switch"
-		type="button"
-		role="switch"
-		:aria-pressed="isChecked ? 'true' : 'false'"
-	>
+	<span class="v-switch">
+		<button
+			@click="toggleInput"
+			type="button"
+			role="switch"
+			:aria-pressed="isChecked ? 'true' : 'false'"
+		/>
 		<slot name="label">{{ label }}</slot>
-	</button>
+	</span>
 </template>
 
 <script lang="ts">
