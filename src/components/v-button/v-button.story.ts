@@ -112,16 +112,16 @@ export const withIcon = () => ({
 			default: boolean('Disabled', false, 'Button')
 		},
 		color: {
-			default: text('Text Color', '--button-primary-text-color', 'Colors')
+			default: text('Color', '--button-primary-text-color', 'Colors')
 		},
 		backgroundColor: {
 			default: text('Background Color', '--button-primary-background-color', 'Colors')
 		},
 		hoverColor: {
-			default: text('Hover Color', '--white', 'Colors')
+			default: text('Color (hover)', '--white', 'Colors')
 		},
 		hoverBackgroundColor: {
-			default: text('Hover Background Color', '--black', 'Colors')
+			default: text('Background Color (hover)', '--black', 'Colors')
 		}
 	},
 	template: `
