@@ -3,17 +3,17 @@
 </template>
 
 <script>
-import mixin from "@directus/extension-toolkit/mixins/interface";
+import mixin from '@directus/extension-toolkit/mixins/interface';
 
 export default {
 	mixins: [mixin],
 	computed: {
 		icon() {
 			if (this.options.showAsCheckbox) {
-				return this.value ? "check_box" : "check_box_outline_blank";
+				return this.value ? 'check_box' : 'check_box_outline_blank';
 			}
 
-			return this.value ? "check" : "close";
+			return this.value ? 'check' : 'close';
 		}
 	}
 };
