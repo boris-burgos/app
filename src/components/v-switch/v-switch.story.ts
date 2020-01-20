@@ -58,6 +58,9 @@ export const arrayState = () => ({
 	`
 });
 
+export const disabled = () =>
+	`<div><v-switch label="Disabled" disabled /><v-switch :inputValue="true" label="Disabled" disabled /></div>`;
+
 export const colors = () => ({
 	methods: {
 		onChange: action('change')

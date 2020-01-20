@@ -6,6 +6,7 @@
 		role="switch"
 		:aria-pressed="isChecked ? 'true' : 'false'"
 		:style="colorStyle"
+		:disabled="disabled"
 	>
 		<span class="switch" />
 		<span class="label">
@@ -39,6 +40,10 @@ export default createComponent({
 		color: {
 			type: String,
 			default: '--input-background-color-active'
+		},
+		disabled: {
+			type: Boolean,
+			default: false
 		}
 	},
 	setup(props, { emit }) {
@@ -93,14 +98,13 @@ export default createComponent({
 		height: 24px;
 		width: 44px;
 		border-radius: 12px;
-		cursor: pointer;
 		border: var(--input-border-width) solid var(--input-border-color);
 		position: relative;
 		transition: var(--fast) var(--transition);
 		transition-property: background-color border;
 		vertical-align: middle;
 
-		&:hover {
+		&:not(:disabled)hover {
 			border-color: var(--input-border-color-hover);
 		}
 
@@ -123,14 +127,19 @@ export default createComponent({
 	}
 
 	&[aria-pressed='true'] {
-		.switch {
-			background-color: var(--_v-switch-color);
-			border-color: var(--_v-switch-color);
+		&:not(:disabled) {
+			.switch {
+				background-color: var(--_v-switch-color);
+				border-color: var(--_v-switch-color);
 
-			&::after {
-				background-color: var(--input-text-color-active);
-				transform: translateX(20px);
+				&::after {
+					background-color: var(--input-text-color-active);
+				}
 			}
+		}
+
+		.switch::after {
+			transform: translateX(20px);
 		}
 	}
 
@@ -138,6 +147,18 @@ export default createComponent({
 		font-size: var(--input-font-size);
 		margin-left: 8px;
 		vertical-align: middle;
+	}
+
+	&:disabled {
+		cursor: not-allowed;
+
+		.switch {
+			background-color: var(--input-background-color-disabled);
+		}
+
+		.label {
+			color: var(--popover-text-color-disabled);
+		}
 	}
 }
 </style>

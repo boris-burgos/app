@@ -66,18 +66,16 @@ describe('Switch', () => {
 		expect(component.emitted().change[0][0]).toBe(true);
 	});
 
-	it('Emits false when state is true', () => {
+	it('Disables the button when disabled prop is set', () => {
 		const component = mount(VSwitch, {
 			localVue,
 			propsData: {
-				inputValue: true
+				disabled: true
 			}
 		});
 
 		const button = component.find('button');
-		button.trigger('click');
-
-		expect(component.emitted().change[0][0]).toBe(false);
+		expect(button.attributes()).toContain('disabled');
 	});
 
 	it('Appends value to array', () => {
