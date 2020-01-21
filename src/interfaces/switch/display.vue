@@ -1,22 +1,38 @@
 <template>
-	<v-icon :class="icon" :name="icon" />
+	<v-icon :name="icon" :color="iconColor" />
 </template>
 
-<script>
-import mixin from '@directus/extension-toolkit/mixins/interface';
+<script lang="ts">
+import { createComponent, computed } from '@vue/composition-api';
+import { Options } from './switch.options';
 
-export default {
-	mixins: [mixin],
-	computed: {
-		icon() {
-			if (this.options.showAsCheckbox) {
-				return this.value ? 'check_box' : 'check_box_outline_blank';
+export default createComponent({
+	props: {
+		value: {
+			type: Boolean,
+			default: null
+		},
+		options: {
+			type: Object as () => Options,
+			required: true
+		}
+	},
+	setup(props) {
+		const icon = computed<string>(() => {
+			if (props.options.checkbox) {
+				return props.value ? 'check_box' : 'check_box_outline_blank';
 			}
 
-			return this.value ? 'check' : 'close';
-		}
+			return props.value ? 'check' : 'close';
+		});
+
+		const iconColor = computed<string>(() => {
+			return props.value ? '--input-border-color-focus' : '--input-border-color';
+		});
+
+		return { icon, iconColor };
 	}
-};
+});
 </script>
 
 <style lang="scss" scoped>

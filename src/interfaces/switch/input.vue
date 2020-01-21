@@ -1,16 +1,17 @@
 <template>
-	<v-switch :inputValue="value" @change="emitValue" :label="label" :disabled="readonly" />
+	<v-checkbox
+		v-if="options.checkbox"
+		:inputValue="value"
+		@change="emitValue"
+		:label="label"
+		:disabled="readonly"
+	/>
+	<v-switch v-else :inputValue="value" @change="emitValue" :label="label" :disabled="readonly" />
 </template>
 
 <script lang="ts">
-import { PropType } from 'vue';
 import { createComponent, computed } from '@vue/composition-api';
-
-type Options = {
-	labelOn: string;
-	labelOff: string;
-	checkbox: boolean;
-};
+import { Options } from './switch.options';
 
 export default createComponent({
 	props: {
