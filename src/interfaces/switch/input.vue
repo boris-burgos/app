@@ -1,12 +1,15 @@
-<template><div>interface</div></template>
+<template>
+	<v-switch :inputValue="value" @change="emitValue" :label="label" :disabled="readonly" />
+</template>
 
 <script lang="ts">
 import { PropType } from 'vue';
-import { createComponent } from '@vue/composition-api';
+import { createComponent, computed } from '@vue/composition-api';
 
 type Options = {
-	labelOff: string;
 	labelOn: string;
+	labelOff: string;
+	checkbox: boolean;
 };
 
 export default createComponent({
@@ -24,8 +27,13 @@ export default createComponent({
 			required: true
 		}
 	},
-	setup(props) {
-		props.options;
+	setup(props, { emit }) {
+		const emitValue = (value: boolean) => emit('input', value);
+		const label = computed<string>(() =>
+			props.value ? props.options.labelOn : props.options.labelOff
+		);
+
+		return { emitValue, label };
 	}
 });
 </script>
