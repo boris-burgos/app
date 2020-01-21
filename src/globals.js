@@ -25,7 +25,7 @@ import VForm from './components/form/form.vue';
 
 // Form inputs
 import VButton from './components/v-button/';
-import VCheckbox from './components/form-inputs/checkbox.vue';
+import VCheckbox from './components/v-checkbox/';
 import VInput from './components/form-inputs/input.vue';
 import VRadio from './components/form-inputs/radio.vue';
 import VSelect from './components/form-inputs/select.vue';

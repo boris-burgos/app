@@ -454,8 +454,7 @@
 					id="createM2Mjunction"
 					value="m2mjunction"
 					:label="$t('auto_generate')"
-					:checked="createM2Mjunction"
-					@change="createM2Mjunction = !createM2Mjunction"
+					v-model="createM2Mjunction"
 				/>
 
 				<v-icon name="arrow_backward" />
