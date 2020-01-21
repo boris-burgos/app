@@ -3,9 +3,8 @@
 		class="v-checkbox"
 		@click="toggleInput"
 		type="button"
-		role="switch"
+		role="checkbox"
 		:aria-pressed="isChecked ? 'true' : 'false'"
-		:style="colorStyle"
 		:disabled="disabled"
 	>
 		<v-icon :name="icon" :color="iconColor" />
@@ -55,12 +54,6 @@ export default createComponent({
 			return props.inputValue === true;
 		});
 
-		const colorStyle = computed(() => {
-			return {
-				'--_v-checkbox-color': parseCSSVar(props.color)
-			};
-		});
-
 		const icon = computed<string>(() =>
 			isChecked.value ? 'check_box' : 'check_box_outline_blank'
 		);
@@ -71,7 +64,7 @@ export default createComponent({
 			return '--input-border-color';
 		});
 
-		return { isChecked, toggleInput, colorStyle, icon, iconColor };
+		return { isChecked, toggleInput, icon, iconColor };
 
 		function toggleInput(): void {
 			if (props.inputValue instanceof Array) {
@@ -102,23 +95,6 @@ export default createComponent({
 	display: flex;
 	height: var(--input-height);
 	align-items: center;
-
-	&[aria-pressed='true'] {
-		&:not(:disabled) {
-			.checkbox {
-				background-color: var(--_v-checkbox-color);
-				border-color: var(--_v-checkbox-color);
-
-				&::after {
-					background-color: var(--input-text-color-active);
-				}
-			}
-		}
-
-		.checkbox::after {
-			transform: translateX(20px);
-		}
-	}
 
 	.label:not(:empty) {
 		font-size: var(--input-font-size);

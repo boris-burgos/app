@@ -75,7 +75,7 @@ describe('Switch', () => {
 		});
 
 		const button = component.find('button');
-		expect(button.attributes()).toContain('disabled');
+		expect(Object.keys(button.attributes())).toContain('disabled');
 	});
 
 	it('Appends value to array', () => {

@@ -716,7 +716,7 @@ export default {
 						'text-input',
 						'textarea',
 						'wysiwyg',
-						'toggle',
+						'switch',
 						'datetime',
 						'calendar',
 						'file',

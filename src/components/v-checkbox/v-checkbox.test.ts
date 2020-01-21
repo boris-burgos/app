@@ -1,8 +1,10 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import VueCompositionAPI from '@vue/composition-api';
+import VIcon from '../v-icon/';
 
 const localVue = createLocalVue();
 localVue.use(VueCompositionAPI);
+localVue.component('v-icon', VIcon);
 
 import VCheckbox from './v-checkbox.vue';
 
@@ -16,17 +18,6 @@ describe('Checkbox', () => {
 		});
 
 		expect(component.find('span[class="label"]').text()).toContain('Turn me on');
-	});
-
-	it('Uses the correct inline styles for custom colors', () => {
-		const component = mount(VCheckbox, {
-			localVue,
-			propsData: {
-				color: '#123123'
-			}
-		});
-
-		expect((component.vm as any).colorStyle['--_v-Checkbox-color']).toBe('#123123');
 	});
 
 	it('Renders as checked when inputValue `true` is given', () => {
@@ -75,7 +66,7 @@ describe('Checkbox', () => {
 		});
 
 		const button = component.find('button');
-		expect(button.attributes()).toContain('disabled');
+		expect(Object.keys(button.attributes())).toContain('disabled');
 	});
 
 	it('Appends value to array', () => {
@@ -106,5 +97,36 @@ describe('Checkbox', () => {
 		button.trigger('click');
 
 		expect(component.emitted().change[0][0]).toEqual(['blue', 'green']);
+	});
+
+	it('Renders the correct icon for state', () => {
+		const component = mount(VCheckbox, {
+			localVue,
+			propsData: {
+				inputValue: false
+			}
+		});
+
+		expect((component.vm as any).icon).toBe('check_box_outline_blank');
+
+		component.setProps({ inputValue: true });
+
+		expect((component.vm as any).icon).toBe('check_box');
+	});
+
+	it('Renders the correct iconColor for state', () => {
+		const component = mount(VCheckbox, {
+			localVue,
+			propsData: {
+				inputValue: false,
+				color: '--red'
+			}
+		});
+
+		expect((component.vm as any).iconColor).toBe('--input-border-color');
+
+		component.setProps({ inputValue: true });
+
+		expect((component.vm as any).iconColor).toBe('--red');
 	});
 });
